@@ -307,7 +307,9 @@ class _ReorderableListState extends State<ReorderableList> {
         case TargetPlatform.macOS:
           switch (widget.scrollDirection) {
             case Axis.horizontal:
-              var hover = false;
+              final hover = ValueNotifier<bool>(
+                  false); // Cria um ValueNotifier para gerenciar o estado do hover
+
               return Stack(
                 key: itemGlobalKey,
                 children: <Widget>[
@@ -322,14 +324,28 @@ class _ReorderableListState extends State<ReorderableList> {
                       child: ReorderableDragStartListener(
                         index: index,
                         child: MouseRegion(
-                          onEnter: (event) => setState(() => hover =
-                              true), // Ativa o hover quando o mouse entra
-                          onExit: (event) => setState(() => hover =
-                              false), // Desativa o hover quando o mouse sai
-                          child: Icon(
-                            Icons.drag_handle,
-                            color:
-                                hover ? Colors.grey[800] : Colors.transparent,
+                          cursor: SystemMouseCursors.click,
+                          onEnter: (event) => hover.value =
+                              true, // Ativa o hover quando o mouse entra
+                          onExit: (event) => hover.value =
+                              false, // Desativa o hover quando o mouse sai
+                          child: ValueListenableBuilder<bool>(
+                            valueListenable: hover,
+                            builder: (context, value, child) {
+                              return AnimatedContainer(
+                                duration: Duration(
+                                    milliseconds: 200), // Duração da animação
+                                decoration: BoxDecoration(
+                                  color: value
+                                      ? Colors.grey[800]
+                                      : Colors
+                                          .black, // Muda a cor quando o hover está ativo
+                                  borderRadius: BorderRadius.circular(
+                                      4.0), // Adiciona um pouco de borda arredondada
+                                ),
+                                child: const Icon(Icons.drag_handle),
+                              );
+                            },
                           ),
                         ),
                       ),
@@ -338,7 +354,9 @@ class _ReorderableListState extends State<ReorderableList> {
                 ],
               );
             case Axis.vertical:
-              var hover = false;
+              final hover = ValueNotifier<bool>(
+                  false); // Cria um ValueNotifier para gerenciar o estado do hover
+
               return Stack(
                 key: itemGlobalKey,
                 children: <Widget>[
@@ -353,14 +371,28 @@ class _ReorderableListState extends State<ReorderableList> {
                       child: ReorderableDragStartListener(
                         index: index,
                         child: MouseRegion(
-                          onEnter: (event) => setState(() => hover =
-                              true), // Ativa o hover quando o mouse entra
-                          onExit: (event) => setState(() => hover =
-                              false), // Desativa o hover quando o mouse sai
-                          child: Icon(
-                            Icons.drag_handle,
-                            color:
-                                hover ? Colors.grey[800] : Colors.transparent,
+                          cursor: SystemMouseCursors.click,
+                          onEnter: (event) => hover.value =
+                              true, // Ativa o hover quando o mouse entra
+                          onExit: (event) => hover.value =
+                              false, // Desativa o hover quando o mouse sai
+                          child: ValueListenableBuilder<bool>(
+                            valueListenable: hover,
+                            builder: (context, value, child) {
+                              return AnimatedContainer(
+                                duration: Duration(
+                                    milliseconds: 200), // Duração da animação
+                                decoration: BoxDecoration(
+                                  color: value
+                                      ? Colors.grey[800]
+                                      : Colors
+                                          .black, // Muda a cor quando o hover está ativo
+                                  borderRadius: BorderRadius.circular(
+                                      4.0), // Adiciona um pouco de borda arredondada
+                                ),
+                                child: const Icon(Icons.drag_handle),
+                              );
+                            },
                           ),
                         ),
                       ),
