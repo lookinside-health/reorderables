@@ -333,8 +333,8 @@ class _ReorderableListState extends State<ReorderableList> {
                             valueListenable: hover,
                             builder: (context, value, child) {
                               return AnimatedContainer(
-                                width: 32.0, // Define a largura
-                                height: 32.0, // Define a altura
+                                width: 36.0, // Define a largura
+                                height: 36.0, // Define a altura
                                 alignment: Alignment.center,
                                 duration: Duration(microseconds: 200),
                                 decoration: BoxDecoration(
@@ -381,8 +381,8 @@ class _ReorderableListState extends State<ReorderableList> {
                             valueListenable: hover,
                             builder: (context, value, child) {
                               return AnimatedContainer(
-                                width: 32.0, // Define a largura
-                                height: 32.0, // Define a altura
+                                width: 36.0, // Define a largura
+                                height: 36.0, // Define a altura
                                 alignment: Alignment.center,
                                 duration: Duration(microseconds: 200),
                                 decoration: BoxDecoration(
