@@ -298,8 +298,7 @@ class _ReorderableListState extends State<ReorderableList> {
       return true;
     }());
 
-    final Key itemGlobalKey =
-        _ReorderableListChildGlobalKey(item.key!, this);
+    final Key itemGlobalKey = _ReorderableListChildGlobalKey(item.key!, this);
 
     if (widget.buildDefaultDragHandles) {
       switch (Theme.of(context).platform) {
@@ -308,6 +307,7 @@ class _ReorderableListState extends State<ReorderableList> {
         case TargetPlatform.macOS:
           switch (widget.scrollDirection) {
             case Axis.horizontal:
+              var hover;
               return Stack(
                 key: itemGlobalKey,
                 children: <Widget>[
@@ -321,9 +321,22 @@ class _ReorderableListState extends State<ReorderableList> {
                       alignment: AlignmentDirectional.bottomCenter,
                       child: ReorderableDragStartListener(
                         index: index,
-                        child: InkWell(
-                          child: MouseRegion(
-                            cursor: SystemMouseCursors.click,
+                        child: MouseRegion(
+                          onEnter: (event) => setState(() => hover =
+                              true), // Ativa o hover quando o mouse entra
+                          onExit: (event) => setState(() => hover =
+                              false), // Desativa o hover quando o mouse sai
+                          child: AnimatedContainer(
+                            duration: Duration(
+                                milliseconds: 200), // Duração da animação
+                            decoration: BoxDecoration(
+                              color: hover
+                                  ? Colors.grey[800]
+                                  : Colors
+                                      .transparent, // Muda a cor quando o hover está ativo
+                              borderRadius: BorderRadius.circular(
+                                  4.0), // Adiciona um pouco de borda arredondada
+                            ),
                             child: const Icon(Icons.drag_handle),
                           ),
                         ),
@@ -333,22 +346,36 @@ class _ReorderableListState extends State<ReorderableList> {
                 ],
               );
             case Axis.vertical:
+              var hover;
               return Stack(
                 key: itemGlobalKey,
                 children: <Widget>[
                   item,
                   Positioned.directional(
                     textDirection: Directionality.of(context),
-                    top: 0,
-                    bottom: 0,
-                    end: 8,
+                    start: 0,
+                    end: 0,
+                    bottom: 8,
                     child: Align(
                       alignment: AlignmentDirectional.centerEnd,
                       child: ReorderableDragStartListener(
                         index: index,
-                        child: InkWell(
-                          child: MouseRegion(
-                            cursor: SystemMouseCursors.click,
+                        child: MouseRegion(
+                          onEnter: (event) => setState(() => hover =
+                              true), // Ativa o hover quando o mouse entra
+                          onExit: (event) => setState(() => hover =
+                              false), // Desativa o hover quando o mouse sai
+                          child: AnimatedContainer(
+                            duration: Duration(
+                                milliseconds: 200), // Duração da animação
+                            decoration: BoxDecoration(
+                              color: hover
+                                  ? Colors.grey[800]
+                                  : Colors
+                                      .transparent, // Muda a cor quando o hover está ativo
+                              borderRadius: BorderRadius.circular(
+                                  4.0), // Adiciona um pouco de borda arredondada
+                            ),
                             child: const Icon(Icons.drag_handle),
                           ),
                         ),
@@ -508,8 +535,7 @@ class _ReorderableListState extends State<ReorderableList> {
 // of the objects used to generate widgets.
 @optionalTypeArgs
 class _ReorderableListChildGlobalKey extends GlobalObjectKey {
-  const _ReorderableListChildGlobalKey(this.subKey, this.state)
-      : super(subKey);
+  const _ReorderableListChildGlobalKey(this.subKey, this.state) : super(subKey);
 
   final Key subKey;
   final State state;
