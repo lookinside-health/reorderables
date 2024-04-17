@@ -318,7 +318,7 @@ class _ReorderableListState extends State<ReorderableList> {
                     textDirection: Directionality.of(context),
                     start: 0,
                     end: 0,
-                    bottom: 10,
+                    bottom: 12,
                     child: Align(
                       alignment: AlignmentDirectional.bottomCenter,
                       child: ReorderableDragStartListener(
@@ -333,10 +333,10 @@ class _ReorderableListState extends State<ReorderableList> {
                             valueListenable: hover,
                             builder: (context, value, child) {
                               return AnimatedContainer(
-                                width: 30.0, // Define a largura
-                                height: 30.0, // Define a altura
+                                width: 35.0, // Define a largura
+                                height: 35.0, // Define a altura
                                 alignment: Alignment.center,
-                                duration: Duration(milliseconds: 200),
+                                duration: Duration(microseconds: 200),
                                 decoration: BoxDecoration(
                                   color: value
                                       ? Colors.grey[300]
@@ -366,7 +366,7 @@ class _ReorderableListState extends State<ReorderableList> {
                     textDirection: Directionality.of(context),
                     start: 0,
                     end: 0,
-                    bottom: 10,
+                    bottom: 12,
                     child: Align(
                       alignment: AlignmentDirectional.centerEnd,
                       child: ReorderableDragStartListener(
@@ -381,10 +381,10 @@ class _ReorderableListState extends State<ReorderableList> {
                             valueListenable: hover,
                             builder: (context, value, child) {
                               return AnimatedContainer(
-                                width: 30.0, // Define a largura
-                                height: 30.0, // Define a altura
+                                width: 35.0, // Define a largura
+                                height: 35.0, // Define a altura
                                 alignment: Alignment.center,
-                                duration: Duration(milliseconds: 200),
+                                duration: Duration(microseconds: 200),
                                 decoration: BoxDecoration(
                                   color: value
                                       ? Colors.grey[300]
