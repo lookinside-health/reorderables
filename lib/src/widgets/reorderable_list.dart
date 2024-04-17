@@ -333,13 +333,14 @@ class _ReorderableListState extends State<ReorderableList> {
                             valueListenable: hover,
                             builder: (context, value, child) {
                               return AnimatedContainer(
+                                alignment: Alignment.topCenter,
                                 duration: Duration(
                                     milliseconds: 200), // Duração da animação
                                 decoration: BoxDecoration(
                                   color: value
                                       ? Colors.grey[800]
                                       : Colors
-                                          .black, // Muda a cor quando o hover está ativo
+                                          .transparent, // Muda a cor quando o hover está ativo
                                   borderRadius: BorderRadius.circular(
                                       4.0), // Adiciona um pouco de borda arredondada
                                 ),
@@ -380,13 +381,14 @@ class _ReorderableListState extends State<ReorderableList> {
                             valueListenable: hover,
                             builder: (context, value, child) {
                               return AnimatedContainer(
+                                alignment: Alignment.topCenter,
                                 duration: Duration(
                                     milliseconds: 200), // Duração da animação
                                 decoration: BoxDecoration(
                                   color: value
                                       ? Colors.grey[800]
                                       : Colors
-                                          .black, // Muda a cor quando o hover está ativo
+                                          .transparent, // Muda a cor quando o hover está ativo
                                   borderRadius: BorderRadius.circular(
                                       4.0), // Adiciona um pouco de borda arredondada
                                 ),
