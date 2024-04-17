@@ -318,7 +318,7 @@ class _ReorderableListState extends State<ReorderableList> {
                     textDirection: Directionality.of(context),
                     start: 0,
                     end: 0,
-                    bottom: 6,
+                    bottom: 10,
                     child: Align(
                       alignment: AlignmentDirectional.bottomCenter,
                       child: ReorderableDragStartListener(
@@ -366,7 +366,7 @@ class _ReorderableListState extends State<ReorderableList> {
                     textDirection: Directionality.of(context),
                     start: 0,
                     end: 0,
-                    bottom: 6,
+                    bottom: 10,
                     child: Align(
                       alignment: AlignmentDirectional.centerEnd,
                       child: ReorderableDragStartListener(
