@@ -318,7 +318,7 @@ class _ReorderableListState extends State<ReorderableList> {
                     textDirection: Directionality.of(context),
                     start: 0,
                     end: 0,
-                    bottom: 12,
+                    bottom: 11,
                     child: Align(
                       alignment: AlignmentDirectional.bottomCenter,
                       child: ReorderableDragStartListener(
@@ -333,8 +333,8 @@ class _ReorderableListState extends State<ReorderableList> {
                             valueListenable: hover,
                             builder: (context, value, child) {
                               return AnimatedContainer(
-                                width: 35.0, // Define a largura
-                                height: 35.0, // Define a altura
+                                width: 32.0, // Define a largura
+                                height: 32.0, // Define a altura
                                 alignment: Alignment.center,
                                 duration: Duration(microseconds: 200),
                                 decoration: BoxDecoration(
@@ -342,7 +342,7 @@ class _ReorderableListState extends State<ReorderableList> {
                                       ? Colors.grey[300]
                                       : Colors.transparent,
                                   borderRadius: BorderRadius.circular(
-                                      15.0), // Torna o container redondo
+                                      30.0), // Torna o container redondo
                                 ),
                                 child: const Icon(Icons.drag_handle),
                               );
@@ -366,7 +366,7 @@ class _ReorderableListState extends State<ReorderableList> {
                     textDirection: Directionality.of(context),
                     start: 0,
                     end: 0,
-                    bottom: 12,
+                    bottom: 11,
                     child: Align(
                       alignment: AlignmentDirectional.centerEnd,
                       child: ReorderableDragStartListener(
@@ -381,8 +381,8 @@ class _ReorderableListState extends State<ReorderableList> {
                             valueListenable: hover,
                             builder: (context, value, child) {
                               return AnimatedContainer(
-                                width: 35.0, // Define a largura
-                                height: 35.0, // Define a altura
+                                width: 32.0, // Define a largura
+                                height: 32.0, // Define a altura
                                 alignment: Alignment.center,
                                 duration: Duration(microseconds: 200),
                                 decoration: BoxDecoration(
@@ -390,7 +390,7 @@ class _ReorderableListState extends State<ReorderableList> {
                                       ? Colors.grey[300]
                                       : Colors.transparent,
                                   borderRadius: BorderRadius.circular(
-                                      15.0), // Torna o container redondo
+                                      30.0), // Torna o container redondo
                                 ),
                                 child: const Icon(Icons.drag_handle),
                               );
