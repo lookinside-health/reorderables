@@ -333,7 +333,7 @@ class _ReorderableListState extends State<ReorderableList> {
                             valueListenable: hover,
                             builder: (context, value, child) {
                               return AnimatedContainer(
-                                alignment: Alignment.centerRight,
+                                alignment: Alignment.topRight,
                                 duration: Duration(
                                     milliseconds: 200), // Duração da animação
                                 decoration: BoxDecoration(
@@ -381,7 +381,7 @@ class _ReorderableListState extends State<ReorderableList> {
                             valueListenable: hover,
                             builder: (context, value, child) {
                               return AnimatedContainer(
-                                alignment: Alignment.centerRight,
+                                alignment: Alignment.topRight,
                                 duration: Duration(
                                     milliseconds: 200), // Duração da animação
                                 decoration: BoxDecoration(
