@@ -326,18 +326,10 @@ class _ReorderableListState extends State<ReorderableList> {
                               true), // Ativa o hover quando o mouse entra
                           onExit: (event) => setState(() => hover =
                               false), // Desativa o hover quando o mouse sai
-                          child: AnimatedContainer(
-                            duration: Duration(
-                                milliseconds: 200), // Duração da animação
-                            decoration: BoxDecoration(
-                              color: hover
-                                  ? Colors.grey[800]
-                                  : Colors
-                                      .transparent, // Muda a cor quando o hover está ativo
-                              borderRadius: BorderRadius.circular(
-                                  4.0), // Adiciona um pouco de borda arredondada
-                            ),
-                            child: const Icon(Icons.drag_handle),
+                          child: Icon(
+                            Icons.drag_handle,
+                            color:
+                                hover ? Colors.grey[800] : Colors.transparent,
                           ),
                         ),
                       ),
@@ -365,18 +357,10 @@ class _ReorderableListState extends State<ReorderableList> {
                               true), // Ativa o hover quando o mouse entra
                           onExit: (event) => setState(() => hover =
                               false), // Desativa o hover quando o mouse sai
-                          child: AnimatedContainer(
-                            duration: Duration(
-                                milliseconds: 200), // Duração da animação
-                            decoration: BoxDecoration(
-                              color: hover
-                                  ? Colors.grey[800]
-                                  : Colors
-                                      .transparent, // Muda a cor quando o hover está ativo
-                              borderRadius: BorderRadius.circular(
-                                  4.0), // Adiciona um pouco de borda arredondada
-                            ),
-                            child: const Icon(Icons.drag_handle),
+                          child: Icon(
+                            Icons.drag_handle,
+                            color:
+                                hover ? Colors.grey[800] : Colors.transparent,
                           ),
                         ),
                       ),
