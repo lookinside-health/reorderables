@@ -307,7 +307,7 @@ class _ReorderableListState extends State<ReorderableList> {
         case TargetPlatform.macOS:
           switch (widget.scrollDirection) {
             case Axis.horizontal:
-              var hover;
+              var hover = false;
               return Stack(
                 key: itemGlobalKey,
                 children: <Widget>[
@@ -346,7 +346,7 @@ class _ReorderableListState extends State<ReorderableList> {
                 ],
               );
             case Axis.vertical:
-              var hover;
+              var hover = false;
               return Stack(
                 key: itemGlobalKey,
                 children: <Widget>[
