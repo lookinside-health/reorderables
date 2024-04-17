@@ -26,34 +26,34 @@ import 'package:flutter/rendering.dart';
 /// to move the item. On [TargetPlatformVariant.mobile], no drag handle will be
 /// added, but when the user long presses anywhere on the item it will start
 /// moving the item. Displaying drag handles can be controlled with
-/// [ReorderableListView.buildDefaultDragHandles].
+/// [ReorderableList.buildDefaultDragHandles].
 ///
 /// All list items must have a key.
 ///
-/// This example demonstrates using the [ReorderableListView.proxyDecorator] callback
+/// This example demonstrates using the [ReorderableList.proxyDecorator] callback
 /// to customize the appearance of a list item while it's being dragged.
 ///
 /// {@tool dartpad}
-/// While a drag is underway, the widget returned by the [ReorderableListView.proxyDecorator]
+/// While a drag is underway, the widget returned by the [ReorderableList.proxyDecorator]
 /// callback serves as a "proxy" (a substitute) for the item in the list. The proxy is
-/// created with the original list item as its child. The [ReorderableListView.proxyDecorator]
+/// created with the original list item as its child. The [ReorderableList.proxyDecorator]
 /// callback in this example is similar to the default one except that it changes the
 /// proxy item's background color.
 ///
 /// ** See code in examples/api/lib/material/reorderable_list/reorderable_list_view.1.dart **
 /// {@end-tool}
 ///
-/// This example demonstrates using the [ReorderableListView.proxyDecorator] callback to
+/// This example demonstrates using the [ReorderableList.proxyDecorator] callback to
 /// customize the appearance of a [Card] while it's being dragged.
 ///
 /// {@tool dartpad}
 /// The default [proxyDecorator] wraps the dragged item in a [Material] widget and animates
-/// its elevation. This example demonstrates how to use the [ReorderableListView.proxyDecorator]
+/// its elevation. This example demonstrates how to use the [ReorderableList.proxyDecorator]
 /// callback to update the dragged card elevation without inserted a new [Material] widget.
 ///
 /// ** See code in examples/api/lib/material/reorderable_list/reorderable_list_view.2.dart **
 /// {@end-tool}
-class ReorderableListView extends StatefulWidget {
+class ReorderableList extends StatefulWidget {
   /// Creates a reorderable list from a pre-built list of widgets.
   ///
   /// This constructor is appropriate for lists with a small number of
@@ -63,9 +63,9 @@ class ReorderableListView extends StatefulWidget {
   ///
   /// See also:
   ///
-  ///   * [ReorderableListView.builder], which allows you to build a reorderable
+  ///   * [ReorderableList.builder], which allows you to build a reorderable
   ///     list where the items are built as needed when scrolling the list.
-  ReorderableListView({
+  ReorderableList({
     // super.key,
     required List<Widget> children,
     required this.onReorder,
@@ -117,13 +117,13 @@ class ReorderableListView extends StatefulWidget {
   /// The `itemBuilder` should always return a non-null widget, and actually
   /// create the widget instances when called. Avoid using a builder that
   /// returns a previously-constructed widget; if the list view's children are
-  /// created in advance, or all at once when the [ReorderableListView] itself
-  /// is created, it is more efficient to use the [ReorderableListView]
+  /// created in advance, or all at once when the [ReorderableList] itself
+  /// is created, it is more efficient to use the [ReorderableList]
   /// constructor. Even more efficient, however, is to create the instances
   /// on demand using this constructor's `itemBuilder` callback.
   ///
   /// This example creates a list using the
-  /// [ReorderableListView.builder] constructor. Using the [IndexedWidgetBuilder], The
+  /// [ReorderableList.builder] constructor. Using the [IndexedWidgetBuilder], The
   /// list items are built lazily on demand.
   /// {@tool dartpad}
   ///
@@ -131,9 +131,9 @@ class ReorderableListView extends StatefulWidget {
   /// {@end-tool}
   /// See also:
   ///
-  ///   * [ReorderableListView], which allows you to build a reorderable
+  ///   * [ReorderableList], which allows you to build a reorderable
   ///     list with all the items passed into the constructor.
-  const ReorderableListView.builder({
+  const ReorderableList.builder({
     // super.key,
     required this.itemBuilder,
     required this.itemCount,
@@ -283,23 +283,23 @@ class ReorderableListView extends StatefulWidget {
   final double? autoScrollerVelocityScalar;
 
   @override
-  State<ReorderableListView> createState() => _ReorderableListViewState();
+  State<ReorderableList> createState() => _ReorderableListState();
 }
 
-class _ReorderableListViewState extends State<ReorderableListView> {
+class _ReorderableListState extends State<ReorderableList> {
   Widget _itemBuilder(BuildContext context, int index) {
     final Widget item = widget.itemBuilder(context, index);
     assert(() {
       if (item.key == null) {
         throw FlutterError(
-          'Every item of ReorderableListView must have a key.',
+          'Every item of ReorderableList must have a key.',
         );
       }
       return true;
     }());
 
     final Key itemGlobalKey =
-        _ReorderableListViewChildGlobalKey(item.key!, this);
+        _ReorderableListChildGlobalKey(item.key!, this);
 
     if (widget.buildDefaultDragHandles) {
       switch (Theme.of(context).platform) {
@@ -503,8 +503,8 @@ class _ReorderableListViewState extends State<ReorderableListView> {
 // The difference with GlobalObjectKey is that it uses [==] instead of [identical]
 // of the objects used to generate widgets.
 @optionalTypeArgs
-class _ReorderableListViewChildGlobalKey extends GlobalObjectKey {
-  const _ReorderableListViewChildGlobalKey(this.subKey, this.state)
+class _ReorderableListChildGlobalKey extends GlobalObjectKey {
+  const _ReorderableListChildGlobalKey(this.subKey, this.state)
       : super(subKey);
 
   final Key subKey;
@@ -515,7 +515,7 @@ class _ReorderableListViewChildGlobalKey extends GlobalObjectKey {
     if (other.runtimeType != runtimeType) {
       return false;
     }
-    return other is _ReorderableListViewChildGlobalKey &&
+    return other is _ReorderableListChildGlobalKey &&
         other.subKey == subKey &&
         other.state == state;
   }
