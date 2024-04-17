@@ -321,9 +321,11 @@ class _ReorderableListState extends State<ReorderableList> {
                       alignment: AlignmentDirectional.bottomCenter,
                       child: ReorderableDragStartListener(
                         index: index,
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: const Icon(Icons.drag_handle),
+                        child: InkWell(
+                          child: MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: const Icon(Icons.drag_handle),
+                          ),
                         ),
                       ),
                     ),
@@ -344,9 +346,11 @@ class _ReorderableListState extends State<ReorderableList> {
                       alignment: AlignmentDirectional.centerEnd,
                       child: ReorderableDragStartListener(
                         index: index,
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: const Icon(Icons.drag_handle),
+                        child: InkWell(
+                          child: MouseRegion(
+                            cursor: SystemMouseCursors.click,
+                            child: const Icon(Icons.drag_handle),
+                          ),
                         ),
                       ),
                     ),
